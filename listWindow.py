@@ -10,9 +10,14 @@ class listWindowClass:
         self.listWindow.title("List Window")
         self.listWindow.geometry("500x500")
 
-        Label(self.listWindow, text="Liste over indbetalinger.. eller.. noget der ligner en cylinder").pack()
+        Label(self.listWindow, text="Liste over Brugere og deres indbetalinger").pack()
 
-        img = ImageTk.PhotoImage(Image.open("assets/img/cyl.png"))
-        panel = Label(self.listWindow, image=img)
-        panel.image = img
-        panel.pack(side="bottom", fill="both", expand="yes")
+        ##todo: print liste over folk og values
+        for item in self.master.fodboldtur.items():
+            print(item)
+        self.leftFrame = Frame(self.listWindow, borderwidth=2, relief=GROOVE)
+        self.leftFrame.pack(side=LEFT, fill=BOTH, expand=False)  # Changed expand to False
+        for item in self.master.fodboldtur:
+            Label(self.leftFrame, text=item).pack(side=TOP, anchor='w', padx=(0, 15))  # Align labels to the left
+        ##todo: Lave en button der går tilbage til MENU og lukker fanen
+
